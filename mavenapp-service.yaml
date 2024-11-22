@@ -11,18 +11,5 @@ spec:
       targetPort: 8080   
   type: NodePort 
   
-  livenessProbe:
-    httpGet:
-      path: /healthz
-      port: 8080
-    initialDelaySeconds: 5
-    periodSeconds: 10
-    failureThreshold: 3
-
-  readinessProbe:
-    httpGet:
-      path: /readiness
-      port: 8080
-    initialDelaySeconds: 5
-    periodSeconds: 10
+  
 

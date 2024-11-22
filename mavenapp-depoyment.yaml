@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: mavenapp-deployment
 spec:
-  replicas: 1  
+  replicas: 1
   selector:
     matchLabels:
       app: mavenapp
@@ -17,4 +17,17 @@ spec:
           image: deepika135/mavenapp:latest
           ports:
             - containerPort: 8080
-         
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /readiness
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            failureThreshold: 3

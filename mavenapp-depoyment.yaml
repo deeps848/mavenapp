@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mavenapp-deployment
+spec:
+  replicas: 1  
+  selector:
+    matchLabels:
+      app: mavenapp
+  template:
+    metadata:
+      labels:
+        app: mavenapp
+    spec:
+      containers:
+        - name: mavenapp
+          image: deepika135/mavenapp:latest
+          ports:
+            - containerPort: 8080
+         
